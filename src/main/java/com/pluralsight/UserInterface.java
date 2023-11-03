@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -16,8 +17,8 @@ public class UserInterface {
         boolean running = true;
         while (running) {
             System.out.println("Welcome to the main menu. \nPlease select an option: ");
-            System.out.println("1)Find vehicles within a price range");
-            System.out.println("2)ind vehicles by make / model");
+            System.out.println("1) Find vehicles within a price range");
+            System.out.println("2) Find vehicles by make / model");
             System.out.println("3) Find vehicles by year range");
             System.out.println("4) Find vehicles by color");
             System.out.println("5) Find vehicles by mileage range");
@@ -30,39 +31,45 @@ public class UserInterface {
             String input = scanner.nextLine().trim();
             switch (input) {
                 case "1":
-                    System.out.println();
+                    processGetByPriceRequest();
                     break;
                 case "2":
-                    System.out.println();
+                    processGetByMakeModelRequest();
                     break;
                 case "3":
-                    System.out.println();
+                    processGetByYearRequest();
                     break;
                 case "4":
-                    System.out.println();
+                    processGetByColorRequest();
                     break;
                 case "5":
-                    System.out.println();
+                    processGetByMileageRequest();
                     break;
                 case "6":
-                    System.out.println();
+                    processGetByVehicleTypeRequest();
                     break;
                 case "7":
-                    System.out.println();
+                    processGetAllVehicleRequest();
                     break;
                 case "8":
-                    System.out.println();
+                    processAddVehicleRequest();
                     break;
-                case"9":
-                    System.out.println();
+                case "9":
+                    processRemoveVehicleRequest();
                     break;
-                case"99":
+                case "99":
                     System.out.println();
                     running = false;
                 default:
                     System.out.println("Invalid option. Please select the right option.");
                     break;
             }
+        }
+    }
+
+    private void displayVehicles(List<Vehicle> listOfVehicles) {
+        for (Vehicle vehicle : listOfVehicles) {
+            System.out.println(vehicle);
         }
     }
 

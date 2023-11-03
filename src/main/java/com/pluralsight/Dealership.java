@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Dealership {
     private String name;
@@ -49,32 +50,32 @@ public class Dealership {
                 ", phone='" + phone + '\'' +
                 '}';
     }
-     public ArrayList<Vehicle> getVehiclesByPrice(double min ,double max){
+     public List<Vehicle> getVehiclesByPrice(double min , double max){
         return null;
     }
 
 
-    public ArrayList<Vehicle> getVehiclesByMakeModel( String make, String model){
+    public List<Vehicle> getVehiclesByMakeModel( String make, String model){
         return null;
     }
 
-    public ArrayList<Vehicle> getVehiclesByYear(String min, String max){
+    public List<Vehicle> getVehiclesByYear(String min, String max){
         return null;
     }
 
-    public ArrayList<Vehicle> getVehiclesByColor(String color){
+    public List<Vehicle> getVehiclesByColor(String color){
         return null;
     }
 
-    public ArrayList<Vehicle> getVehiclesByMileage(double min, double max){
+    public List<Vehicle> getVehiclesByMileage(double min, double max){
         return null;
     }
 
-    public ArrayList<Vehicle> getVehiclesByType(String vehicleType){
+    public List<Vehicle> getVehiclesByType(String vehicleType){
         return null;
     }
 
-    public ArrayList<Vehicle> getAllVehicles(){
+    public List<Vehicle> getAllVehicles(){
         return this.inventory;
     }
     public void addVehicle(Vehicle vehicle){

@@ -87,26 +87,50 @@ public class UserInterface {
         System.out.println("PLease type the maximum price: ");
         double maximumPrice = Userinput.nextDouble();
         Userinput.nextLine();
-        helperDisplayVehicles(dealership.getVehiclesByPrice(minimumPrice,maximumPrice));
+        helperDisplayVehicles(dealership.getVehiclesByPrice(minimumPrice, maximumPrice));
     }
 
     public void processGetByMakeModelRequest() {
-        System.out.println("Please ");
+        System.out.println("Please enter the vehicle by make: ");
+        String vehicleByMake = Userinput.nextLine();
+        System.out.println("Please enter vehicle by model: ");
+        String vehicleByModel = Userinput.nextLine();
+        helperDisplayVehicles(dealership.getVehiclesByMakeModel(vehicleByMake, vehicleByModel));
     }
 
     public void processGetByYearRequest() {
+        System.out.println("Please enter the minimum year model of car you're looking for: ");
+        int minCarYear = Userinput.nextInt();
+        Userinput.nextLine();
+        System.out.println("Please enter the maximum year model of car you're looking for: ");
+        int maxCarYear = Userinput.nextInt();
+        Userinput.nextLine();
+        helperDisplayVehicles(dealership.getVehiclesByYear(minCarYear, maxCarYear));
 
     }
 
     public void processGetByColorRequest() {
+        System.out.println("Please select the color of the car you want: ");
+        String carColor = Userinput.nextLine();
+        helperDisplayVehicles(dealership.getVehiclesByColor(carColor));
 
     }
 
     public void processGetByMileageRequest() {
+        System.out.println("Please select the minimum mileage you want for your car: ");
+        double minCarMileage = Userinput.nextDouble();
+        Userinput.next();
+        System.out.println("Please select the maximum mileage you want for your car: ");
+        double maxCarMileage = Userinput.nextDouble();
+        Userinput.next();
+        helperDisplayVehicles(dealership.getVehiclesByMileage(minCarMileage, maxCarMileage));
 
     }
 
     public void processGetByVehicleTypeRequest() {
+        System.out.println("Please enter the type of vehicle you're looking for: ");
+        String vehicleType = Userinput.nextLine();
+        helperDisplayVehicles(dealership.getVehiclesByType(vehicleType));
 
     }
 
@@ -116,9 +140,49 @@ public class UserInterface {
 
     public void processAddVehicleRequest() {
 
+        System.out.println("Please fill in the information needed to add a vehicle: " +
+                "\n Please type in the vin number");
+        int vin = Userinput.nextInt();
+        Userinput.nextLine();
+
+        System.out.println("please add the year: ");
+        int year = Userinput.nextInt();
+        Userinput.nextLine();
+
+        System.out.println("Please enter the make: ");
+        String carMake = Userinput.nextLine();
+
+        System.out.println("Please enter the model: ");
+        String carModel = Userinput.nextLine();
+
+        System.out.println("Please enter the type: ");
+        String carType = Userinput.nextLine();
+
+        System.out.println("Please enter the color: ");
+        String carColor = Userinput.nextLine();
+
+        System.out.println("Please enter the mileage: ");
+        int odometer = Userinput.nextInt();
+        Userinput.nextLine();
+
+        System.out.println("Please enter the price: ");
+        double carPrice = Userinput.nextDouble();
+        Userinput.nextLine();
+
+
+        Vehicle vehicle = new Vehicle(vin, year, carMake, carModel, carType, carColor, odometer, carPrice);
+        dealership.addVehicle(vehicle);
     }
 
     public void processRemoveVehicleRequest() {
+        System.out.println("Please enter the vin number: ");
+        int vinNo = Userinput.nextInt();
+        Userinput.nextLine();
+        for (Vehicle v : dealership.getAllVehicles()){
+            if (v.getVin() == vinNo){
+                dealership.removeVehicle(v);
+            }
+        }
 
     }
 

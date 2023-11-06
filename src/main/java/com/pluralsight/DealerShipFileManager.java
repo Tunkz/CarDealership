@@ -1,9 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class DealerShipFileManager {
     public Dealership getDealership() {
@@ -13,7 +10,7 @@ public class DealerShipFileManager {
         int lineNumber = 1;
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("dealership.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("inventory.csv"));
 
             while ((line = br.readLine()) != null) {
                 String[] pipes = line.split("\\|");
@@ -56,6 +53,12 @@ public class DealerShipFileManager {
     }
 
     public void saveDealership(Dealership dealership){
+    try {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("inventory.csv",
+                true));
 
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
     }
 }

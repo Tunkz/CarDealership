@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Dealership dealership;
+    private Scanner Userinput = new Scanner(System.in);
+
 
     public UserInterface() {
 
@@ -79,11 +81,17 @@ public class UserInterface {
     }
 
     public void processGetByPriceRequest() {
-
+        System.out.println("Please type in the minimum price: ");
+        double minimumPrice = Userinput.nextDouble();
+        Userinput.nextLine();
+        System.out.println("PLease type the maximum price: ");
+        double maximumPrice = Userinput.nextDouble();
+        Userinput.nextLine();
+        helperDisplayVehicles(dealership.getVehiclesByPrice(minimumPrice,maximumPrice));
     }
 
     public void processGetByMakeModelRequest() {
-
+        System.out.println("Please ");
     }
 
     public void processGetByYearRequest() {
@@ -103,7 +111,7 @@ public class UserInterface {
     }
 
     public void processGetAllVehicleRequest() {
-    helperDisplayVehicles(dealership.getAllVehicles());
+        helperDisplayVehicles(dealership.getAllVehicles());
     }
 
     public void processAddVehicleRequest() {

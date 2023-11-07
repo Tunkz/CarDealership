@@ -45,20 +45,34 @@ public class DealerShipFileManager {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error: unidentified error. Please try again");
         }
 
         return dealership1;
     }
 
-    public void saveDealership(Dealership dealership){
-    try {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("inventory.csv",
-                true));
+    public void saveDealership(Dealership dealership) {
+        String dealershipName = String.format("%1s|%1s|%1s", dealership.getName(), dealership.getAddress(), dealership.getPhone());
+        try {
+            BufferedWriter nameWriter = new BufferedWriter(new FileWriter("inventory.csv"));
+            nameWriter.write(dealershipName + "\n");
+            nameWriter.close();
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter("inventory.csv", true));
+                for (Vehicle x : dealership.getAllVehicles()) {
+                    String vehicleFormat = x.getVin() + "|" + x.getYear() + "|" + x.getMake() + "|" + x.getModel() +
+                            "|" + x.getVehicleType() + "|" + x.getColor() + "|" + x.getOdometer() + "|"
+                            + x.getPrice() + "\n";
+                    writer.write(vehicleFormat);
+                }
+                writer.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
 
-    } catch (IOException e) {
-        throw new RuntimeException(e);
-    }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 }
